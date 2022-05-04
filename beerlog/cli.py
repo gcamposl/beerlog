@@ -1,8 +1,13 @@
-from beerlog.core import add_beer_to_database
+from beerlog.core import add_beer_to_database, get_beers_from_database
+from rich.console import Console
+from rich.table import Table
+from typing import Optional
 import typer
 
 
 main = typer.Typer(help="Beer Management Application")
+
+console = Console()
 
 
 @main.command("add")
@@ -21,6 +26,14 @@ def add(
 
 
 @main.command("list")
-def list_beers(style: str):
+def list_beers(style: Optional[str] = None):
     """List beers in database"""
-    print(style)
+    beers = get_beers_from_database()
+    table = Table(title="Beerlog")
+    headers = ["id", "name", "style", "rate", "date"]
+    for header in headers:
+        table.add_column(header, style="magenta")
+    for beer in beers:
+        values = [str(getattr(beer, header)) for header in headers]
+        table.add_row(*values)
+    console.print(table)
