@@ -27,5 +27,6 @@ class Beer(SQLModel, table=True):
         rate = mean([values["flavor"], values["image"], values["cost"]])
         return int(rate)
 
+# heineken = Beer(name="Heineken", style="NEIPA", flavor=6, image=8, cost=8)
 
-heineken = Beer(name="Heineken", style="NEIPA", flavor=6, image=8, cost=8)
+## Inserir os testes!!!
