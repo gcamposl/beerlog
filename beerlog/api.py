@@ -1,9 +1,11 @@
+from typing import List
+
+from fastapi import FastAPI
+
 from beerlog.core import get_beers_from_database
-from beerlog.serializers import BeerIn, BeerOut
 from beerlog.database import get_session
 from beerlog.models import Beer
-from fastapi import FastAPI
-from typing import List
+from beerlog.serializers import BeerIn, BeerOut
 
 api = FastAPI(title="Beerlog")
 
