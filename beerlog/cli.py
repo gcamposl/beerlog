@@ -1,9 +1,10 @@
-from beerlog.core import add_beer_to_database, get_beers_from_database
+from typing import Optional
+
+import typer
 from rich.console import Console
 from rich.table import Table
-from typing import Optional
-import typer
 
+from beerlog.core import add_beer_to_database, get_beers_from_database
 
 main = typer.Typer(help="Beer Management Application")
 

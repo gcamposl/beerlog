@@ -17,6 +17,7 @@ flake8 = "^4.0.1"
 pydantic = "^1.9.0"
 uvicorn = "^0.17.6"
 SQLAlchemy = "^1.4.36"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 ipython = "^8.2.0"
