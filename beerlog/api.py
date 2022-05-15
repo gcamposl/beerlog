@@ -10,14 +10,14 @@ from beerlog.serializers import BeerIn, BeerOut
 api = FastAPI(title="Beerlog")
 
 
-@api.get('/beers', response_model=List[BeerOut])
+@api.get("/beers", response_model=List[BeerOut])
 async def list_beers():
-    '''List beers in database'''
+    """List beers in database"""
     beers = get_beers_from_database()
     return beers
 
 
-@api.post('/beers', response_model=BeerOut)
+@api.post("/beers", response_model=BeerOut)
 async def add_beer(beer_in: BeerIn, response: Response):
     """payload - o que mandamos de dados na nossa requisicao"""
     beer = Beer(**beer_in.dict())

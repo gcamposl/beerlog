@@ -6,8 +6,8 @@ runner = CliRunner()
 
 def test_add_beer():
     """
-        Teste funcional pode ter mais de um assert
-        Imita sempre a usabilidade do usuário
+    Teste funcional pode ter mais de um assert
+    Imita sempre a usabilidade do usuário
     """
     result = runner.invoke(
         main,
