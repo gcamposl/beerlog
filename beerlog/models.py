@@ -1,8 +1,8 @@
 from datetime import datetime
-from statistics import mean
+from statistics import mean  # NEW
 from typing import Optional
 
-from pydantic import validator
+from pydantic import validator  # NEW
 from sqlmodel import Field, SQLModel
 
 
@@ -16,7 +16,8 @@ class Beer(SQLModel, table=True):
     rate: int = 0
     date: datetime = Field(default_factory=datetime.now)
 
-    @validator("flavor", "image", "cost")
+    # NEW
+    @validator("image", "flavor", "cost")
     def validate_ratings(cls, v, field):
         if v < 1 or v > 10:
             raise RuntimeError(f"{field.name} must be between 1 and 10")
@@ -26,6 +27,3 @@ class Beer(SQLModel, table=True):
     def calculate_rate(cls, v, values):
         rate = mean([values["flavor"], values["image"], values["cost"]])
         return int(rate)
-
-
-# heineken = Beer(name="Heineken", style="NEIPA", flavor=6, image=8, cost=8)
